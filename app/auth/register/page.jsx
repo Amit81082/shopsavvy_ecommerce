@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { useAuth } from "../../../context/AuthContext";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function RegisterPage() {
   const { register } = useAuth();
@@ -39,9 +40,20 @@ export default function RegisterPage() {
         onChange={(e) => setForm({ ...form, password: e.target.value })}
       />
 
-      <button onClick={handleSubmit} className="bg-black text-white px-4 py-2">
-        Register
-      </button>
+      <div className="flex items-center justify-center">
+        <button
+          onClick={handleSubmit}
+          className="bg-black text-white w-full flex items-center justify-center px-4 py-2 mb-2 rounded cursor-pointer"
+        >
+          Register
+        </button>
+      <p className="text-center">
+        Already have an account?{" "}
+        <Link href="/auth/login">
+          <span className="underline text-red-600">Login</span>
+        </Link>
+      </p>
+      </div>
     </div>
   );
 }
